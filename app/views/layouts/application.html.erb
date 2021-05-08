@@ -11,6 +11,12 @@
   </head>
 
   <body>
+  <br/>
+    <% if logged_in?%>
+      <%= link_to('logout', logout_path, method: 'get') %>
+      <% else %>
+        <%= link_to('login', login_path, method: 'get') %>
+      <% end %>
     <%= yield %>
   </body>
 </html>

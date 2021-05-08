@@ -1,0 +1,14 @@
+<h1>Edit yout account </h1>
+
+<%= form_with model: @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :username %>
+    <%= f.text_field :username %><br>
+    <%= f.label :email %>
+    <%= f.text_field :email %><br>
+    <%= f.hidden_field :password %><br>
+
+    <%= f.submit 'Submit changes' %><br>
+   
+<% end %>
