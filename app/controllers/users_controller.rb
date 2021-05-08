@@ -1,14 +1,18 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: %i[ show edit update destroy ]
 
     def index
       @users = User.all
     end
   
-    def show
+    def show 
+      if params[:id] == session[:user_id]
+      @user = User.find_by_id(params[:id])
+      else
+      @user = User.find_by_id(params[:id])
+      end
     end
   
-    def new
+    def new 
       @user = User.new
     end
   
@@ -17,36 +21,21 @@ class UsersController < ApplicationController
   
     def create
       @user = User.new(user_params)
-  
-      respond_to do |format|
-        if @user.save
-          format.html { redirect_to @user, notice: "User was successfully created." }
-          format.json { render :show, status: :created, location: @user }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else 
+        flash[:errors] = @user.errors.full_messages
+          render :new
       end
     end
   
     def update
-      respond_to do |format|
-        if @user.update(user_params)
-          format.html { redirect_to @user, notice: "User was successfully updated." }
-          format.json { render :show, status: :ok, location: @user }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
-      end
+      
     end
   
     def destroy
       @user.destroy
-      respond_to do |format|
-        format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-        format.json { head :no_content }
-      end
     end
   
     private
@@ -55,6 +44,6 @@ class UsersController < ApplicationController
       end
   
       def user_params
-        params.fetch(:user, {})
-      end
+        params.require(:user).permit(:name, :email, :password_digest, :username)
+    end 
 end
