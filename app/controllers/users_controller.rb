@@ -33,13 +33,11 @@ class UsersController < ApplicationController
     end
   
     def update
-      
       if @user.update(user_params)
         redirect_to user_path(@user)
       else 
         render :edit
       end 
-      
     end
   
     def destroy
@@ -54,13 +52,13 @@ class UsersController < ApplicationController
   
       def user_params
         params.require(:user).permit(:name, :email, :username, :email, :password)
-    end 
+      end 
 
-    def require_login
-      unless logged_in?
-        flash[:error] = "You must be logged in to access this section"
-        redirect_to login_path
+      def require_login
+        unless logged_in?
+          flash[:error] = "You must be logged in to access this section"
+          redirect_to login_path
+        end
       end
-    end
   
 end

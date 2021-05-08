@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   #get '/auth/:provider/callback', to: 'sessions#omniauth'
-  resources :users
+  resources :users do 
+    resources :babies
+  end
   resources :events
   resources :babies
 end

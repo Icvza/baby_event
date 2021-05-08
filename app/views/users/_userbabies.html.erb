@@ -1,0 +1,6 @@
+<% @user.babies.each do |b|%>
+<br/>
+    <%= b.name %>
+    <%= b.DOB %>
+    <%= link_to 'edit', edit_baby_path(b)%>
+<% end %>
