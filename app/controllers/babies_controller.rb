@@ -1,6 +1,7 @@
 class BabiesController < ApplicationController
   before_action :require_ownership, except: [:new, :create]
   before_action :set_baby, only: [:update, :edit, :destroy, :show]
+    
     def index
       @babies = Baby.where(user_id: current_user.id)
     end
@@ -53,7 +54,6 @@ class BabiesController < ApplicationController
       def require_ownership
         if set_baby.user_id != current_user.id
           redirect_to user_path(@baby.user_id)
-        end
+       end
       end
-  
 end

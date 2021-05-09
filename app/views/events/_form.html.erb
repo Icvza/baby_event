@@ -1,3 +1,8 @@
+<% if @baby %>
+    <h1><%= @baby.name %></h1>
+<% else %> 
+    <h1>Log an Event and create a new baby</h1>
+<% end %> 
 
 <%= form_with model: @event do |f| %>
     
@@ -17,3 +22,4 @@
     <%= f.submit 'Add' %><br>
 
 <% end %>
+

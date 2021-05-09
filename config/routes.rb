@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+  post '/babies/:baby_id/events/new', to: 'events#create'
   #get '/auth/:provider/callback', to: 'sessions#omniauth'
-  resources :users do 
-    resources :babies
+  resources :users
+  resources :babies do
+    resources :events
   end
   resources :events
-  resources :babies
 end

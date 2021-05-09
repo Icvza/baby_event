@@ -4,4 +4,11 @@ class Event < ApplicationRecord
 
     validates :content, presence: true
     validates :baby_id, presence: true
+
+
+    def store_attributes=(attr_hash)
+        if !attr_hash.empty?
+            self.baby = Baby.find_or_create_by(attr_hash) 
+        end  
+    end 
 end

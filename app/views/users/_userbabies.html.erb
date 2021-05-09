@@ -1,6 +1,19 @@
 <% @user.babies.each do |b|%>
 <br/>
-    <%= b.name %>
-    <%= b.DOB %>
-    <%= link_to 'edit', edit_baby_path(b)%>
+    <%= b.name %> 
+    <%= b.DOB %> <%= link_to 'edit', edit_baby_path(b)%>
+        <% b.events.each do |a| %>
+            <br/>
+            <%= a.content %>
+            <br/>
+            <%= a.time %>
+            <br/>
+            <%= link_to 'edit event', edit_baby_event_path(a)%>
+            <br>
+        <% end %>
+        <br/>
+    <%= link_to 'Log event', new_baby_event_path(b)%>
+   
 <% end %>
+
+
