@@ -6,6 +6,11 @@ class Event < ApplicationRecord
     validates :baby_id, presence: true
 
 
+    def self.everything
+        joins(:users, :babies)
+    end
+
+
     def store_attributes=(attr_hash)
         if !attr_hash.empty?
             self.baby = Baby.find_or_create_by(attr_hash) 

@@ -3,7 +3,11 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:update, :destroy, :show]
   before_action :require_ownership, except: [:edit, :new, :create, :index]
   def index
+    if params[:baby_id]
+      @events = Event.where(baby_id: params[:baby_id])
+    else
     @events = Event.all
+    end
   end
 
   def show
