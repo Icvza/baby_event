@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 
   def edit
     if params[:baby_id]
-    require_ownership_for_nested_route
+      require_ownership_for_nested_route
       @event = Event.find(params[:baby_id])
     else
       set_event
