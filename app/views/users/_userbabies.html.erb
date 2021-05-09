@@ -9,11 +9,11 @@
             <%= a.time %>
             <br/>
             <%= link_to 'edit event', edit_baby_event_path(a)%>
+            <%= link_to('delete', event_path(a), method: 'delete') %>
             <br>
         <% end %>
         <br/>
     <%= link_to 'Log event', new_baby_event_path(b)%>
-   
 <% end %>
 
 
