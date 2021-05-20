@@ -44,6 +44,10 @@ class UsersController < ApplicationController
     end
   
     def destroy
+      @user_babies = @user.babies
+      @user_events = @user.events
+      @user_babies.destroy
+      @user_events.destroy
       @user.destroy
       redirect_to signup_path
     end

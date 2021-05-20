@@ -40,6 +40,8 @@ class BabiesController < ApplicationController
     def destroy
       @baby = Baby.find(params[:id])
       @baby.destroy
-      redirect_to signup_path
+      redirect_to signup_path  
     end
+
+    
 end

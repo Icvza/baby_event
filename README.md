@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Clone this repository
 
-Things you may want to cover:
+Once your cd into the repository run rails db:migrate
+Run rails s and go to the provided URL with any browser of choice
 
-* Ruby version
+if you would like to use the google login please create and .env file- Go to google developer console and add yout coogle secret and client id
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
