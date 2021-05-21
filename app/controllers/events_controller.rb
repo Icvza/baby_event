@@ -12,7 +12,8 @@ class EventsController < ApplicationController
   end
   
   def search
-    @events = Event.search(params[:content]) 
+    results = Event.search(params[:content]) 
+    @events = results.where(user_id: current_user.id)
   end 
 
   def show
