@@ -4,7 +4,7 @@ module EventsHelper
     end
 
     def event_params
-      params.require(:event).permit(:content, :time, :user_id, :baby_id)
+      params.require(:event).permit(:content, :time, :user_id, :baby_id, :content)
     end 
 
     def require_ownership

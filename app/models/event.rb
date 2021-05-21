@@ -15,5 +15,9 @@ class Event < ApplicationRecord
     def self.latest_event
       order('time desc').first
     end
+
+    def self.search(content)
+        self.where('content LIKE ?', "%#{content}%")
+    end
       
 end

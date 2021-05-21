@@ -1,0 +1,10 @@
+search results 
+<% if @events.empty? %>
+    looks like nothing matched your search try again
+    <% else %>
+        <% @events.each do |c| %>
+        <%= c.content %>
+        <%= c.time %>
+    <% end %>
+<% end %>
+

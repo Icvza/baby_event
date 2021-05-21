@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   include EventsHelper
   before_action :set_event, only: [:update, :destroy, :show]
-  before_action :require_ownership, except: [:new, :create, :index]
+  before_action :require_ownership, except: [:new, :create, :index, :search]
   def index
     if params[:baby_id]
       @events = Event.where(baby_id: params[:baby_id])
@@ -9,8 +9,11 @@ class EventsController < ApplicationController
     @events = Event.all
     end
     @events132 = Event.latest_event
-    binding.pry
   end
+  
+  def search
+    @events = Event.search(params[:content]) 
+  end 
 
   def show
     

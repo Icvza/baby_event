@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   post '/babies/:baby_id/events/new', to: 'events#create'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
+  get '/search', to: 'events#search'
   resources :users
   resources :babies do
     resources :events

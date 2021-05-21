@@ -1,2 +1,8 @@
 <%= render partial: "profile" %>
 <%= render partial: "userbabies" %>
+ <%= form_with url: search_path, method: :get do |f| %>
+  <%= f.label :content, "Search Songs by content:" %>
+  <%= f.text_field :content %>
+  <%= f.submit "Search"%>
+<% end %>
+
